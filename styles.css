@@ -23,9 +23,7 @@
     justify-content: space-around;
 
 }
-.lastOperation {
-    font-size: 20px;
-}
+
 .currentOperation {
     font-size: 80px;
 }
