@@ -4,15 +4,24 @@ let operand = "";
 let secondNum = "";
 let total;
 let normalExpression = [];
-let carryOverExpression = [];
 let clickedEquals = false;
-let continueOperand = false
 
 const display = document.querySelector('.display');
 const currentOp = document.querySelector('.currentOperation');
 const previousOp = document.querySelector('.previousOperation')
 const buttons = document.querySelectorAll('.btn');
 const numButtons = document.querySelectorAll('.num')
+
+function clearCalc() {
+  firstNum = "";
+  operand = "";
+  secondNum = "";
+  total = undefined;
+  normalExpression = [];
+  clickedEquals = false;
+  currentOp.textContent = 0
+  previousOp.textContent = "";
+}
 
 function handleNumberClick(clickedValue) {
     if (currentOp.textContent === "0"|| normalExpression.length === 2) {
@@ -103,7 +112,8 @@ buttons.forEach((button) => {
         secondNum = "";
         operand = clickedValue;
         total = result;
-        continueOperand = true;
+    } else if (clickedValue === "CLEAR") {
+      clearCalc();
     }
   });
 });
