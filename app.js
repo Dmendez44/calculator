@@ -23,8 +23,21 @@ function clearCalc() {
   previousOp.textContent = "";
 }
 
+function deleteNum(){
+  if ((normalExpression.length !== 2 && normalExpression.length !== 1) && currentOp.textContent !== "0") {
+    if (currentOp.textContent !== "0") {
+      if (currentOp.textContent.length > 1) {
+        // remove last appended 
+        currentOp.textContent = currentOp.textContent.slice(0, -1)
+      } else if (currentOp.textContent.length === 1) {
+        currentOp.textContent = "0"
+      }
+    }
+  }
+}
+
 function handleNumberClick(clickedValue) {
-    if (currentOp.textContent === "0"|| normalExpression.length === 2) {
+    if (clickedValue !== "." && currentOp.textContent === "0"|| normalExpression.length === 2) {
         currentOp.textContent = clickedValue;
     } else if (clickedValue === ".") {
         if (!currentOp.textContent.includes(".")) {
@@ -114,6 +127,8 @@ buttons.forEach((button) => {
         total = result;
     } else if (clickedValue === "CLEAR") {
       clearCalc();
+    } else if (clickedValue === "DELETE") {
+      deleteNum();
     }
   });
 });
