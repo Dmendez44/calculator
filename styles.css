@@ -21,12 +21,17 @@
     border: 2px solid green;
     align-items: flex-end;
     justify-content: space-around;
-
+    flex-wrap: wrap;
 }
 
 .currentOperation {
-    font-size: 80px;
-}
+    font-size: 45px;
+    border: 2px solid blue;
+    max-width: 480px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+
+}   
 /* .option-btn {
     display: flex;
     flex-direction: row;

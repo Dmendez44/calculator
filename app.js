@@ -12,6 +12,17 @@ const previousOp = document.querySelector('.previousOperation')
 const buttons = document.querySelectorAll('.btn');
 const numButtons = document.querySelectorAll('.num')
 
+function roundNumber(number) {
+  const numAsStr = "" + number
+  if (numAsStr.length > 13) {
+    // round num to 13 decimals places
+    const roundedNumber = Number(number.toFixed(10))
+    return roundedNumber;
+  } else {
+    return number
+  }
+}
+
 function clearCalc() {
   firstNum = "";
   operand = "";
@@ -149,7 +160,10 @@ function divide(a, b) {
   if (b === 0) {
     return "Error";
   }
-  return a / b;
+  let operationResult = a / b;
+  console.log("this is the result", operationResult);
+  let numRounded = roundNumber(operationResult);
+  return numRounded
 }
 
 function operate(operator, num1, num2) {
@@ -166,5 +180,3 @@ function operate(operator, num1, num2) {
       break;
   }
 }
-
-
