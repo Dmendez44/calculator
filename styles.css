@@ -7,10 +7,11 @@
 .calc-Container {
     display: flex;
     flex-direction: column;
-    border: 2px solid red;
+    border: 2px solid black;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
+    background-color: #FBFAF5;
 }
 
 .display {
@@ -18,7 +19,7 @@
     flex-direction: column;
     width: 500px;
     height: 160px;
-    border: 2px solid green;
+    border: 2px solid black;
     align-items: flex-end;
     justify-content: space-around;
     flex-wrap: wrap;
@@ -26,7 +27,6 @@
 
 .currentOperation {
     font-size: 45px;
-    border: 2px solid blue;
     max-width: 480px;
     overflow-wrap: break-word;
     word-wrap: break-word;
@@ -40,7 +40,7 @@
 .calc-btns {
     display: flex;
     flex-direction: column;
-    border: 2px solid red;  ;
+    border: 2px solid black;
 }
 
 .row {
@@ -48,7 +48,9 @@
     flex-direction: row;
 }
 
+
 .btn {
+    font-weight: bold;
     font-size: 20px;
     width: 125px;
     height: 90px;

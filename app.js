@@ -55,7 +55,7 @@ function handleNumberClick(clickedValue) {
             currentOp.textContent += "."
         }
     } else if (clickedEquals && operand === ''){
-      console.log('TRIGGERED');
+      //console.log('TRIGGERED');
       currentOp.textContent = clickedValue
       clickedEquals = false;
       previousOp.textContent = "";
@@ -77,7 +77,7 @@ function handleOperandClick(clickedValue) {
         // here we also want to update previous OP
         previousOp.textContent = `${normalExpression[1]} ${normalExpression[0]}`
         let str = `${normalExpression[1]} ${normalExpression[0]}`.length;
-        console.log(str);
+        //console.log(str);
     } else if (normalExpression.length === 1) {
         firstNum = currentOp.textContent;
         operand = clickedValue;
@@ -85,7 +85,7 @@ function handleOperandClick(clickedValue) {
         normalExpression[1] = firstNum
         previousOp.textContent = `${normalExpression[1]} ${normalExpression[0]}`
         let str = `${normalExpression[1]} ${normalExpression[0]}`.length;
-        console.log(str);
+        //console.log(str);
     }
 }
 
@@ -97,24 +97,29 @@ buttons.forEach((button) => {
         handleNumberClick(clickedValue);
     } else if (['+', '-', 'x', '/'].includes(clickedValue) && secondNum === "") {
         handleOperandClick(clickedValue);
-        console.log("we clicked operator for the first time");
+        //console.log("we clicked operator for the first time");
         numButtons.forEach((num) => {
             num.addEventListener('click', (e) => {
               if (normalExpression.length >= 2) {
                   const clickedNum = e.target.value;
                   secondNum = currentOp.textContent;
                   normalExpression[2] = secondNum
-                  console.log('here');
+                  //console.log('here');
               }
             });
         })
     } else if (clickedValue === "=") {
-        console.log(normalExpression);
+        if (normalExpression.length === 0) {
+          return;
+        } else if (normalExpression[2] === undefined) {
+          return
+        }       
+        //console.log(normalExpression);
         result = operate(normalExpression[0], normalExpression[1], normalExpression[2]);
         currentOp.textContent = result;
         previousOp.textContent = `${normalExpression[1]} ${normalExpression[0]} ${normalExpression[2]} =`;
         let str = `${normalExpression[1]} ${normalExpression[0]}`.length;
-        console.log(str);
+        //console.log(str);
         normalExpression = [];
         normalExpression[0] = result;
         firstNum = result;
@@ -125,7 +130,7 @@ buttons.forEach((button) => {
         // now array [0] is is firstNum
         // setting secondNum to be = ""; is causing 2nd else if to repeat
     } else if (['+', '-', 'x', '/'].includes(clickedValue) && normalExpression.length === 3) {
-        console.log(normalExpression);
+        //console.log(normalExpression);
         result = operate(normalExpression[0], normalExpression[1], normalExpression[2]);
         currentOp.textContent = result;
         previousOp.textContent = `${result} ${clickedValue}`;
